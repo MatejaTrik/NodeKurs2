@@ -1,18 +1,15 @@
 console.log('Before')
 // Async function
-getUser(1, function(user) {
-    console.log('User:', user);
-
-    // Get the repos // Async function in async function
-    getRepositories(user.gitHubUserName, (repos) => {
-        console.log('Repos', displayCommits)
-
-        //Ako ubacimo jos neku async funkciu to nazivamo
-
-        //CALBACK HELL 
-    })
-})
+getUser(1, getRepositories)
 console.log('After')
+
+function getRepositories(user) {
+    getRepositories(user.gitHubUserName, getCommits)
+}
+
+function getCommits(repos) {
+    getCommits(repos, displayCommits)
+}
 
 function displayCommits(commits) {
     console.log(commits)

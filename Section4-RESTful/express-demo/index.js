@@ -6,7 +6,7 @@ app.use(express.json())
 
 app.use(function(req, res, next) {
     console.log("loggind...")
-    // next()
+    next()
 })
 
 const courses = [
