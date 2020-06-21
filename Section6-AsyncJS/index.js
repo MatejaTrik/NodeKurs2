@@ -3,12 +3,13 @@ console.log('Before')
 getUser(1, getRepositories)
 console.log('After')
 
+
 function getRepositories(user) {
     getRepositories(user.gitHubUserName, getCommits)
 }
 
 function getCommits(repos) {
-    getCommits(repos, displayCommits)
+    getCommits(repo, displayCommits)
 }
 
 function displayCommits(commits) {
@@ -29,3 +30,10 @@ function getRepositories(username, callback) {
     }, 2000)
     
 }
+
+function getCommits(repo, callback) {
+    setTimeout(() => {
+      console.log('Calling GitHub API...');
+      callback(['commit']);
+    }, 2000);
+  }

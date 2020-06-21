@@ -21,9 +21,9 @@ const Course = mongoose.model('Course', courseSchema);
 // Zatim u promisu savuvavamo to u mongoDB
 async function createCourse() {
     const course = new Course({
-        name: 'Angular',
-        author: 'Mateja',
-        tags: ['angular', 'frontend'],
+        name: 'Node',
+        author: 'Luka',
+        tags: ['backend', 'js'],
         isPublished: true,
     })
     
@@ -71,7 +71,7 @@ async function getCourses() {              //filteri za find
         // po kom kriterijumu zelimo da ih prikazemo 1=rastuce  -1=opadajuce 
         .sort({ name: -1 })
         // SAMO sta zelimo da prikazemo 1-ako zelimo ako ne nista
-        // .select({ name:1, tags:1 })
+        .select({ name:1, tags:1 })
         //broji primerke koji zadovoljavaju kriterijum
         .count()
         console.log(courses)
@@ -95,7 +95,7 @@ async function updateCourse(id) {
     if (!course) return;
 
     course.isPublished = true;
-    course.author = "Another Author";
+    course.author = "MATEJA NAJJACI PROGRAMER U GRADU";
 
     const result = await course.save();
     console.log(result)
@@ -106,4 +106,6 @@ async function removeCourse(id) {
     console.log(result)
 }
 
-removeCourse("5eeb862c3923052740f1dbbf")
+// removeCourse("5eeb862c3923052740f1dbbf")
+
+removeCourse('5eee5fda8a955b35ac80bc72');
